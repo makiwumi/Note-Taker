@@ -5,9 +5,9 @@ const uuidv1 = require('uuidv1');
 
 module.exports = (body) => {
    return data = {
-      "title": body.title,
-      "text": body.text,
-      "id": uuidv1()
+      title: body.title,
+      tex: body.text,
+      id: uuidv1()
    }
 }
 
