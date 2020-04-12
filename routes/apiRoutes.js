@@ -1,16 +1,25 @@
+//declare express, fs and db
+const fs = require('fs');
 const router = require("express").Router();
-const db = require("../db/db.json");
+const store = require("../js/store");
+const path = require('path');
+let db = require("../db/db.json");
 
-module.exports = router {
-  router.get("/api/notes", function(request, response) {
-    // get a note
-    // see 15-HotRestaurant/Solved for more info
-    response.send(db);
-  });
-}
+//get notes
+router.get("/notes", function(req, res){
+  res.send(db);
+});
 
-// other apis here
+//post notes where information is stored
+router.post("/notes", function(req,res){
+  db.push(store(req.body));
+  res.json(true);
+});
 
 // /api/notes/:id
+router.delete("/notes/:id", function(req, res){
+  db = db.filter(elem => elem.id != req.params.id);
+  res.json(true);
+});
 
 module.exports = router;
